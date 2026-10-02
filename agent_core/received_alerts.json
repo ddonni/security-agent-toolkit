@@ -1,0 +1,8 @@
+[
+  {
+    "rule": "brute_force"
+  },
+  {
+    "rule": "night_login"
+  }
+]
