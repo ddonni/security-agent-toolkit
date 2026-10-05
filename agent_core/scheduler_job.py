@@ -8,8 +8,8 @@ parser = argparse.ArgumentParser(description="정기 점검 작업")
 parser.add_argument("--every", type=int, default=2, help="몇 초마다 돌릴지")
 args = parser.parse_args()
 
-THRESHOLD = 1
-
+THRESHOLD = 3
+NIGHT_END = 6
 
 def load_done():
     if os.path.exists("processed_ids.json"):
@@ -22,7 +22,8 @@ def job():
     with open("normalized_logs.json", encoding="utf-8") as f:
         rows = json.load(f)
 
-    count = {}                                # 룰 ① — 계정마다 실패 횟수를 센다 (9/29)
+    count = {}        
+    table = {}                        # 룰 ① — 계정마다 실패 횟수를 센다 (9/29)
     for row in rows:
         if row["level"] == "WARN":
             user = row["user"]
@@ -30,6 +31,14 @@ def job():
                 count[user] = count[user] + 1
             else:
                 count[user] = 1
+
+        ip = row["ip"]
+        if ip in table:
+            if row["user"] not in table[ip]:
+                table[ip].append(row["user"])
+        else:
+            table[ip] = [row["user"]]
+
 
     done = load_done()
     sent = 0
@@ -44,7 +53,20 @@ def job():
                 done.append(event_id)
                 sent += 1
 
+    for ip in table:
+        if len(table[ip]) >= 2 and f"password_spraying:{ip}" not in done:
+            print(f"[전송] password_spraying:{ip}")
+            done.append(f"password_spraying:{ip}")
+            sent += 1
 
+    for row in rows:
+        hour = int(row["time"].split(":")[0])
+        if hour < NIGHT_END and row["level"] == "INFO":
+            event_id = f"night_access:{row['user']}:{row['ip']}"
+            if event_id not in done:
+                print(f"[전송] {event_id}")
+                done.append(event_id)
+                sent += 1
 
     with open("processed_ids.json", "w", encoding="utf-8") as f:
         json.dump(done, f, ensure_ascii=False, indent=2)
@@ -55,6 +77,6 @@ def job():
 # 3. job 을 args.every 초마다 부르게 등록하세요
 schedule.every(args.every).seconds.do(job)
 
-for i in range(4):
+for i in range(10):
     schedule.run_pending()
     time.sleep(1)

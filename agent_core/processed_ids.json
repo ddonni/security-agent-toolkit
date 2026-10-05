@@ -1,9 +1,5 @@
 [
   "brute_force:admin",
-  "brute_force:kim01",
-  "brute_force:park.js",
-  "brute_force:kim.cs",
-  "brute_force:lee.yh",
-  "brute_force:choi.mk",
-  "brute_force:jung.hw"
+  "password_spraying:185.220.101.34",
+  "night_access:admin:211.45.12.9"
 ]
