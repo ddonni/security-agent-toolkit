@@ -93,6 +93,24 @@ LLM 호출이나 알림이 실패해도 멈추지 않고, 보고서는 남습니
 
 그 전에 만든 실습 파일: `api_client.py`(외부 API 재시도), `scheduler_job.py`(정기 점검), `webhook_server.py`(웹훅 수신), `tool_router.py`(LLM 도구 선택).
 
+## 폴더 구조
+
+```
+security-agent-toolkit/
+├─ .vscode/settings.json   노트북 실행 위치를 agent_core 로 고정
+├─ docs/                   일지 · 회고
+└─ agent_core/
+   ├─ *.py                 파이프라인 모듈 · 서버 (서로 import 하므로 한 폴더에 둔다)
+   ├─ *.json · raw_logs.txt 실습 데이터 · 설정 · 실행 결과
+   ├─ notebooks/           수업 노트북 (yymmdd_am|pm_주제.ipynb)
+   ├─ practice/            10/2 연습 서버 · argparse 연습 · curl 스크립트
+   └─ reports/             지난 보고서
+```
+
+노트북은 `notebooks/` 안에 있지만 `.vscode/settings.json` 의 `jupyter.notebookFileRoot` 덕분에 **`agent_core` 폴더에서 실행**됩니다. 그래서 노트북 안의 상대 경로(`config.json`, `../docs/…`)와 `%%writefile` 이 예전과 똑같이 동작합니다. VS Code 에서 `security-agent-toolkit` 폴더를 열어야 이 설정이 적용됩니다.
+
+새로 만드는 보고서는 `report_generator.py` 가 `agent_core` 에 바로 저장합니다. 지난 보고서는 `reports/` 로 옮겨 둡니다.
+
 ## 실행
 
 ```bash
