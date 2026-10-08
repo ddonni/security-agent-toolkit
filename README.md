@@ -127,7 +127,7 @@ python test_agent_core.py  # 테스트 — [테스트 통과] 9건 모두
 
 비밀(API 키)은 `.env`, 비밀이 아닌 설정은 `config.json` 에 둡니다.
 
-## 1과목 회고
+## 회고
 
 전체 내용은 [docs/day08_retrospective.md](docs/day08_retrospective.md) 에 있습니다.
 
