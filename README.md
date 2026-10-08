@@ -61,18 +61,18 @@ alert()`")
   P --> N
   N --> A
 
-  classDef entry fill:#2b5fb8,stroke:#1d4590,stroke-width:2px,color:#ffffff
-  classDef work fill:#e8f0fd,stroke:#2b5fb8,stroke-width:1.5px,color:#1b2230
-  classDef llm fill:#fdf0e1,stroke:#d9822b,stroke-width:1.5px,color:#1b2230
-  classDef ext fill:#fff8ef,stroke:#d9822b,stroke-width:1px,stroke-dasharray:4 3,color:#7a4a12
-  classDef notify fill:#e6f4ec,stroke:#2e8b57,stroke-width:1.5px,color:#1b2230
+  classDef entry fill:#ffffff,stroke:#2b5fb8,stroke-width:3px,color:#1b2230
+  classDef work fill:#ffffff,stroke:#2b5fb8,stroke-width:1.5px,color:#1b2230
+  classDef llm fill:#ffffff,stroke:#d9822b,stroke-width:1.5px,color:#1b2230
+  classDef ext fill:#ffffff,stroke:#d9822b,stroke-width:1px,stroke-dasharray:4 3,color:#7a4a12
+  classDef notify fill:#ffffff,stroke:#2e8b57,stroke-width:1.5px,color:#1b2230
   class P entry
   class S,R work
   class L llm
   class G ext
   class N,A notify
-  style REPORT fill:#f6f8fc,stroke:#b8c4d9,stroke-dasharray:5 4,color:#2b5fb8
-  style ALERT fill:#f4faf6,stroke:#b5d6c2,stroke-dasharray:5 4,color:#2e8b57
+  style REPORT fill:#ffffff,stroke:#b8c4d9,stroke-dasharray:5 4,color:#2b5fb8
+  style ALERT fill:#ffffff,stroke:#b5d6c2,stroke-dasharray:5 4,color:#2e8b57
   linkStyle default stroke:#7a8699,stroke-width:1.5px
 ```
 
