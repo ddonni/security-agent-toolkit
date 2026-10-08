@@ -7,21 +7,50 @@ SKT ALEPH 국비교육 1과목(9/28~10/8) 실습 저장소입니다.
 
 ```mermaid
 flowchart LR
-  P(["pipeline.py<br/>전체 실행<br/>run_pipeline · run_report"])
+  P("`**pipeline.py**
+─────────────
+전체 실행
+─────────────
+run_pipeline()
+run_report()`")
 
   subgraph REPORT["보고서 만들기"]
     direction TB
-    S("event_summarizer.py<br/>경보 요약 · 정렬<br/>summarize_events · sort_by_risk")
-    R("report_generator.py<br/>보고서 만들기<br/>build_report · save_report")
+    S("`**event_summarizer.py**
+─────────────
+경보 요약 · 정렬
+─────────────
+summarize_events()
+sort_by_risk()`")
+    R("`**report_generator.py**
+─────────────
+보고서 만들기
+─────────────
+build_report()
+save_report()`")
   end
 
-  L("llm_client.py<br/>Gemini 호출<br/>call_llm · parse_llm_json")
+  L("`**llm_client.py**
+─────────────
+Gemini 호출
+─────────────
+call_llm()
+parse_llm_json()`")
   G{{"Gemini API"}}
 
   subgraph ALERT["알림"]
     direction TB
-    N("notifier.py<br/>설정 · 알림<br/>load_config · notify")
-    A("alert_server.py<br/>알림 받기<br/>alert")
+    N("`**notifier.py**
+─────────────
+설정 · 알림
+─────────────
+load_config()
+notify()`")
+    A("`**alert_server.py**
+─────────────
+알림 받기
+─────────────
+alert()`")
   end
 
   P --> S
