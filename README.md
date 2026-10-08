@@ -7,12 +7,12 @@ SKT ALEPH 국비교육 1과목(9/28~10/8) 실습 저장소입니다.
 
 ```mermaid
 flowchart LR
-  P["<b>pipeline.py</b><br/>전체 실행<br/>run_pipeline · run_report"]
-  S["<b>event_summarizer.py</b><br/>경보 요약 · 정렬<br/>summarize_events · sort_by_risk"]
-  R["<b>report_generator.py</b><br/>보고서 만들기<br/>build_report · save_report"]
-  L["<b>llm_client.py</b><br/>Gemini 호출<br/>call_llm · parse_llm_json"]
-  N["<b>notifier.py</b><br/>설정 · 알림<br/>load_config · notify"]
-  A["<b>alert_server.py</b><br/>알림 받기<br/>alert"]
+  P["pipeline.py<br/>전체 실행<br/>run_pipeline · run_report"]
+  S["event_summarizer.py<br/>경보 요약 · 정렬<br/>summarize_events · sort_by_risk"]
+  R["report_generator.py<br/>보고서 만들기<br/>build_report · save_report"]
+  L["llm_client.py<br/>Gemini 호출<br/>call_llm · parse_llm_json"]
+  N["notifier.py<br/>설정 · 알림<br/>load_config · notify"]
+  A["alert_server.py<br/>알림 받기<br/>alert"]
 
   P --> S --> L
   P --> R --> L
