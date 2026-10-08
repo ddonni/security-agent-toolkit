@@ -7,16 +7,44 @@ SKT ALEPH 국비교육 1과목(9/28~10/8) 실습 저장소입니다.
 
 ```mermaid
 flowchart LR
-  P["pipeline.py<br/>전체 실행<br/>run_pipeline · run_report"]
-  S["event_summarizer.py<br/>경보 요약 · 정렬<br/>summarize_events · sort_by_risk"]
-  R["report_generator.py<br/>보고서 만들기<br/>build_report · save_report"]
-  L["llm_client.py<br/>Gemini 호출<br/>call_llm · parse_llm_json"]
-  N["notifier.py<br/>설정 · 알림<br/>load_config · notify"]
-  A["alert_server.py<br/>알림 받기<br/>alert"]
+  P(["pipeline.py<br/>전체 실행<br/>run_pipeline · run_report"])
 
-  P --> S --> L
-  P --> R --> L
-  P --> N --> A
+  subgraph REPORT["보고서 만들기"]
+    direction TB
+    S("event_summarizer.py<br/>경보 요약 · 정렬<br/>summarize_events · sort_by_risk")
+    R("report_generator.py<br/>보고서 만들기<br/>build_report · save_report")
+  end
+
+  L("llm_client.py<br/>Gemini 호출<br/>call_llm · parse_llm_json")
+  G{{"Gemini API"}}
+
+  subgraph ALERT["알림"]
+    direction TB
+    N("notifier.py<br/>설정 · 알림<br/>load_config · notify")
+    A("alert_server.py<br/>알림 받기<br/>alert")
+  end
+
+  P --> S
+  P --> R
+  S --> L
+  R --> L
+  L -.-> G
+  P --> N
+  N --> A
+
+  classDef entry fill:#2b5fb8,stroke:#1d4590,stroke-width:2px,color:#ffffff
+  classDef work fill:#e8f0fd,stroke:#2b5fb8,stroke-width:1.5px,color:#1b2230
+  classDef llm fill:#fdf0e1,stroke:#d9822b,stroke-width:1.5px,color:#1b2230
+  classDef ext fill:#fff8ef,stroke:#d9822b,stroke-width:1px,stroke-dasharray:4 3,color:#7a4a12
+  classDef notify fill:#e6f4ec,stroke:#2e8b57,stroke-width:1.5px,color:#1b2230
+  class P entry
+  class S,R work
+  class L llm
+  class G ext
+  class N,A notify
+  style REPORT fill:#f6f8fc,stroke:#b8c4d9,stroke-dasharray:5 4,color:#2b5fb8
+  style ALERT fill:#f4faf6,stroke:#b5d6c2,stroke-dasharray:5 4,color:#2e8b57
+  linkStyle default stroke:#7a8699,stroke-width:1.5px
 ```
 
 `python pipeline.py` 한 번이면 설정 읽기 → 경보 요약 → 보고서 저장 → 알림까지 차례로 돕니다.
