@@ -12,15 +12,15 @@ for number, time, user, resource, action in LOG:
     ok, reason = check_permission(user, resource, action)        # 2. check_permission 으로 판정해 ok, reason 으로 나눠 받는다
     if ok:                                                       # 3. ok 이면 allowed 를 1 늘리고, counts 의 "사용자 허용" 을 1 늘리고, 그 사용자의 역할을 role 에 담는다
         allowed += 1
-        counts["사용자 허용"] = counts.get("사용자 허용", 0) + 1
+        counts[user + " 허용"] = counts.get(user + " 허용", 0) + 1
         role = USERS[user]["role"]
         if role not in used:                                     # 4. 같은 허용 기록에서, used 에 role 이 아직 없으면 used[role] = [] 로 빈 목록을 먼저 만들고,
             used[role] = []
         used[role].append(f"{resource}:{action}")                #    used[role] 목록에 "자원:행위" 글자를 더한다
     else:                                                        # 5. 아니면 denied 를 1 늘리고, "[거부]" 와 번호 · 시각 · 사용자 · 자원 · 행위 · 이유를 출력하고,
         denied += 1                                              #    counts 의 "사용자 거부" 를 1 늘린다
-        print("[거부]", number, time, user, resource, action, reason)
-        counts["사용자 거부"] = counts.get("사용자 거부", 0) + 1
+        print("[거부]", number, time, user, resource, action, "-", reason)
+        counts[user + " 거부"] = counts.get(user + " 거부", 0) + 1
 # 2. check_permission 으로 판정해 ok, reason 으로 나눠 받는다
 # 3. ok 이면 allowed 를 1 늘리고, counts 의 "사용자 허용" 을 1 늘리고, 그 사용자의 역할을 role 에 담는다
 # 4. 같은 허용 기록에서, used 에 role 이 아직 없으면 used[role] = [] 로 빈 목록을 먼저 만들고,
