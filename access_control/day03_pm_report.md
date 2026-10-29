@@ -60,7 +60,7 @@
 5 seoyeon reviewing -> 승인되지 않음
 6 tester reviewing -> 승인되지 않음
 --- 단계 2: 점검 - 상태별 건수와 SLA
-{'granted': 1, 'rejected': 1, 'approved': 1, 'reviewing': 1}
+{'granted': 1, 'rejected': 1, 'approved': 2, 'reviewing': 2}
 SLA 초과 요청 번호: 5
 SLA 초과 요청 번호: 6
 --- 단계 3: 저장 - requests.json
@@ -75,7 +75,7 @@ SLA 초과 요청 번호: 6
 - (다) 🔍 상태별 건수가 `granted` 1 · `rejected` 1 · `approved` 2 · `reviewing` 2 로 나왔습니다. 이 숫자를 매일 아침 보면 처리 흐름의 어디가 막혀 있는지 어떻게 알 수 있나요?
 
   - 쓸 내용: ① 숫자에서 읽을 수 있는 막힌 곳 ② 막힌 곳에 해야 할 일
-  - 답 : reviewing이 많으면 승인 작업이 많은 걸 알 수 있겠다. 담당자한테 알리기 
+  - 답 : reviewing이 많으면 승인 작업이 많은 걸 알 수 있겠다. 담당자한테 알리기
     ① reviewing이 쌓이면 승인 단계가, approved가 쌓이면 승인 후 부여 단계가 막힌 것이다. 지금은 승인 3건(granted 1 + approved 2) 중 1건만 부여돼서 부여 단계가 더 막혀 있다. 매일 아침 숫자를 어제와 비교해, 줄지 않고 계속 늘어나는 상태를 막힌 곳으로 본다.
   - ② reviewing은 승인자에게 알리고, 정해 둔 시간을 넘기면 윗사람에게 에스컬레이션한다. approved는 왜 부여되지 않았는지 확인해서, 퇴사자처럼 부여하면 안 되는 경우는 요청자와 승인자에게 알려 정리하고, 단순히 실행을 안 한 경우는 부여를 진행한다.
 

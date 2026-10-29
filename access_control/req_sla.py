@@ -19,7 +19,7 @@ def check_sla_breach(requests, now):                             # 요청서 목
     # 5.     (now - requested) 를 .total_seconds() 로 초 단위 숫자로 바꾸고 3600 으로 나눠 hours 에 담는다
             hours = (now - requested).total_seconds() / 3600
     # 6.     hours 가 SLA_HOURS 보다 크면(같으면 아직 아니다)
-            if hours >= SLA_HOURS:
+            if hours > SLA_HOURS:
     # 7.       request.copy() 로 요청서를 복사해 overdue 에 담는다
                 overdue = request.copy()
     # 8.       overdue["wait_hours"] 를 round(hours, 1) 로 정한다 (지난 시간을 소수 첫째 자리까지 반올림)
