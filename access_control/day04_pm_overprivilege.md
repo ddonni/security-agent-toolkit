@@ -25,6 +25,7 @@
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치와 오전 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
+
    ```bash
    pwd
    ls
@@ -37,11 +38,13 @@
    - 마지막 줄에 `오전 파일 정상 14 7` 이 나와야 합니다. 뒤의 숫자는 현황 14건, 사용 이력 7건입니다.
    - 아니면 오전 문서(`day04_am_access_review.md`) 맨 아래 「앞 교시 파일 완성본」으로 `review_list.py` · `review_rules.py` · `review_unused.py` 와 `config/access_log.json` 을 만듭니다. 10/21(수) · 10/22(목) 파일이 없으면 수업 자료로 받은 `day02_recovery` 폴더에서 넣습니다.
 3. **오늘 받은 파일 두 개를 `access_control` 폴더로 옮깁니다.** 수업 자료에서 내려받은 파일은 보통 `다운로드` 폴더에 있습니다. 파일 탐색기(맥북은 Finder)에서 `다운로드` 폴더를 열고, 두 파일을 VS Code 왼쪽 목록의 `access_control` 폴더 위로 끌어다 놓습니다. 끌어다 놓기가 안 되면 파일을 VS Code 로 열고 메뉴 **File › Save As…** 로 `access_control` 폴더에 저장합니다.
+
    - `day04_pm_overprivilege.md` (이 파일) — 오후 실습 안내. 읽기만 합니다.
    - `day04_pm_report.md` — **오후 보고서.** 5 · 6교시 답과 마무리 칸을 여기에 적습니다.
 4. **[VS Code]** 이 파일을 열고 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)를 누릅니다. 이 문서가 미리보기로 열립니다.
 5. **[VS Code]** `day04_pm_report.md` 를 오른쪽 클릭 › **Open to the Side** (보고서가 화면 오른쪽 칸에 열립니다). 질문마다 `쓸 내용:` 을 보고 `답:` 뒤에 씁니다. 코드나 출력을 붙여 넣는 질문은 `답:` 아래의 빈 코드 상자 안에 붙여 넣습니다. 보고서 맨 위 제목 `(이름 · 2026-10-29(목))` 에서 `이름` 두 글자만 내 이름으로 바꿉니다.
 6. 문제는 **할 일 → 순서**대로 합니다.
+
    - 순서 앞의 `[창 이름]` 이 지금 쓸 창이고, `[창 이름]` 이 없는 단계는 안내를 읽고 생각하는 단계입니다.
    - 「🔍」가 붙은 질문은 이 교시에서 꼭 알아야 할 핵심 질문이며, 이유까지 설명합니다. 답을 못 찾았으면 「모름 — 막힌 곳: …」 이라고 씁니다.
    - 막히면 문서 맨 아래 「정답」을 봅니다.
@@ -264,6 +267,7 @@ print(names)                                                     # 후보가 아
 **순서**
 
 1. **[VS Code 또는 터미널]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
+
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
@@ -273,6 +277,7 @@ print(names)                                                     # 후보가 아
    - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim overprivilege.py` → `vim day04_5-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[VS Code]** `overprivilege.py` 의 `generate_report` 본문을 직접 씁니다. 5.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
+
    ```bash
    pwd
    python day04_5-1_run.py
@@ -282,6 +287,7 @@ print(names)                                                     # 후보가 아
    - 맥북은 `python3 day04_5-1_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 요약 한 줄과 후보 한 줄씩, 단계 2는 후보가 아닌 권한 목록 한 줄입니다.
 5. **[보고서]** `day04_pm_report.md` 의 `## 5교시` › `### 문제 5-1` 아래를 채웁니다.
+
    - (가) 실행한 출력 전체를 붙여 넣고, 후보가 모두 몇 건인지, 이유가 둘인 후보가 몇 건인지, 후보가 아닌 권한은 무엇인지 적어 주세요.
    - (나) 🔍 출력에서 이유가 둘인 후보를 하나 고르고, 이유가 둘이라는 것이 담당자가 처리 순서를 정할 때 어떤 도움이 되는지 적어 주세요. 이유를 글자(문자열) 하나가 아니라 목록(`reasons`)으로 담으면 어떤 점이 좋은지도 적어 주세요.
    - (다) 🔍 프로그램이 만든 리포트에는 후보만 담고, 후보가 아닌 권한은 전체 건수(`total`)로만 남겼습니다. 후보가 아닌 권한까지 모두 담는 방법과 비교해 담당자 입장에서 어느 쪽이 나은지 이유와 함께 적어 주세요.
@@ -381,6 +387,61 @@ print(names)                                                     # 후보가 아
 - **실행하면**: 단계 1은 분류 건수, 단계 2는 회수 제외한 후보와 이유, 단계 3은 제외 목록에 있지만 회수 대상으로 남은 후보를 출력합니다.
 - **현업에서는**: 자동 점검 도구도 회수 제외 목록을 두고, 비상용 권한이나 사람이 아닌 프로그램용 계정의 권한을 회수 대상에서 뺍니다.
 
+```python
+from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
+from rbac import USERS, ROLES                                    # 10/21(수)에 만든 사용자 · 역할 딕셔너리를 불러온다
+from exception_policy import EXCEPTIONS, TIME_FORMAT             # 10/22(목)에 만든 예외 리스트와 시각 형식을 불러온다
+from policy import evaluate_access                               # 10/22(목)에 만든 최종 판정 함수를 불러온다
+from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
+from revoke_input import load_to_revoke                          # 어제 점검 결과(회수 대상)를 만드는 함수를 불러온다
+from revoke_plan import plan_revocation                          # 2교시에 만든 회수 계획 함수를 불러온다
+from revoke_approve import load_sensitive, mark_approvals        # 3교시에 만든 승인 함수를 불러온다
+from revoke import execute_revocation, save_log                  # 방금 만든 회수 실행 함수와 이력 저장 함수를 불러온다
+NOW_TEXT = "2026-10-30 10:00"                                    # 오늘 오전 실습의 지금 시각 문자열(고정)
+NOW = datetime.strptime(NOW_TEXT, TIME_FORMAT)                   # 같은 시각을 시각으로 바꾼다. 판정 함수가 쓴다
+DECISIONS = {"dami:SALES:QUERY": "승인", "dami:SALES:CHANGE": "승인"}  # 보안 책임자의 결정(3교시와 같다)
+to_revoke = load_to_revoke()                                     # 어제 점검한 회수 대상을 만든다
+plans = plan_revocation(to_revoke, USERS, ROLES)                 # 회수 계획을 세운다
+sensitive = load_sensitive("config/sensitive.json")              # 민감한 권한 리스트를 읽는다
+plans = mark_approvals(plans, sensitive, DECISIONS)              # 계획마다 승인 상태를 적는다
+def judge(plan):                                                 # 계획 한 건을 받는 함수
+    """계획의 사용자 · 권한을 지금 판정해 「허용(이유)」 또는 「거부(이유)」 문자열을 리턴한다."""
+    resource, action = plan["permission"].split(":")             # "SALES:QUERY" 를 자원과 행위로 나눈다
+    ok, reason = evaluate_access(plan["user"], resource, action, NOW)  # 최종 판정을 한다
+    if ok:                                                       # 허용이면
+        return "허용(" + reason + ")"                            # 허용과 이유를 하나의 문자열로 합친다
+    return "거부(" + reason + ")"                                # 거부와 이유를 하나의 문자열로 합친다
+def judge_all(plans):                                            # 계획 리스트를 받는 함수
+    """계획마다 judge 로 판정한 문자열을 같은 순서의 리스트로 리턴한다."""
+    results = []                                                 # 판정을 담을 빈 리스트
+    for plan in plans:                                           # 계획을 하나씩 꺼낸다
+        verdict = judge(plan)                                    # 계획 한 건을 판정한다
+        results.append(verdict)                                  # 판정해서 추가한다
+    return results                                               # 판정 리스트를 리턴한다
+before = judge_all(plans)                                        # 회수하기 전의 판정을 모두 구해 둔다
+log = execute_revocation(plans, USERS, ROLES, EXCEPTIONS, NOW_TEXT)  # 회수를 실행한다
+after = judge_all(plans)                                         # 회수한 뒤의 판정을 모두 구한다
+print("--- 단계 1: 실행 - 회수 결과")                            # 단계 1 시작을 알리는 줄
+done = 0                                                         # 실행한 건수를 0 으로 시작한다
+for entry in log:                                                # 이력을 하나씩 꺼낸다
+    print(entry["user"], entry["permission"], "|", entry["method"], "|", entry["result"])  # 사용자 · 권한 | 방법 | 결과를 출력한다
+    if entry["result"] == "실행":                                # 실행한 건이면
+        done = done + 1                                          # 건수를 1 늘린다
+print("실행", done, "건, 대기", len(log) - done, "건")           # 실행과 대기 건수를 출력한다
+print("--- 단계 2: 확인 - 회수 전후의 판정")                     # 단계 2 시작을 알리는 줄
+plan_count = len(plans)                                          # 개수를 먼저 구한다
+for i in range(plan_count):                                      # 번호 i 로 회수 전 리스트와 회수 후 리스트를 짝지어 꺼낸다
+    mark = "그대로"                                              # 표시를 그대로로 시작한다
+    if before[i] != after[i]:                                    # 회수 전후의 판정이 다르면
+        mark = "바뀜"                                            # 바뀜으로 고친다
+    print(plans[i]["user"], plans[i]["permission"], "|", before[i], "->", after[i], "|", mark)  # 전후 판정과 표시를 출력한다
+print("--- 단계 3: 저장 - 회수 이력")                            # 단계 3 시작을 알리는 줄
+count = save_log(log, "revocation_log.json")                     # 이력을 파일로 저장한다
+saved = load_json("revocation_log.json", [])                     # 저장한 파일을 다시 읽어
+print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력:", saved[0]["user"], saved[0]["permission"], saved[0]["result"])  # 건수와 첫 이력을 출력한다
+```
+
+
 **🎯 할 일**
 
 1. `config/exclude_list.json` · `report_exclude.py` · `day04_6-1_run.py` 세 파일을 만들고, `split_by_exclude` 본문을 직접 씁니다.
@@ -473,6 +534,7 @@ for item in to_revoke:                                           # 회수 대상
 **순서**
 
 1. **[VS Code 또는 터미널]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
+
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
@@ -481,10 +543,12 @@ for item in to_revoke:                                           # 회수 대상
    - **방법 2 · touch 로 만들기**: 터미널의 위치가 `access_control` 인지 `pwd` 로 먼저 확인합니다. 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch config/exclude_list.json` → `touch report_exclude.py` → `touch day04_6-1_run.py`
    - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim config/exclude_list.json` → `vim report_exclude.py` → `vim day04_6-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `exclude_list.json` 이 `access_log.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
+
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
    - 붙여 넣은 내용이 맞는지 `python -m json.tool config/exclude_list.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고, 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 제외 목록을 읽지 못해 아무것도 제외되지 않습니다.
 3. **[VS Code]** `report_exclude.py` 의 `split_by_exclude` 본문을 직접 씁니다. 6.1 의 표와 그림을 보고 씁니다.
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
+
    ```bash
    pwd
    python day04_6-1_run.py
@@ -494,6 +558,7 @@ for item in to_revoke:                                           # 회수 대상
    - 맥북은 `python3 day04_6-1_run.py` 로 칩니다.
 5. 출력은 세 단계입니다. 단계 1은 분류 건수 한 줄, 단계 2는 회수 제외한 후보와 이유, 단계 3은 제외 목록에 있지만 회수 대상으로 남은 후보입니다.
 6. **[보고서]** `day04_pm_report.md` 의 `## 6교시` › `### 문제 6-1` 아래를 채웁니다.
+
    - (가) 실행한 출력 전체를 붙여 넣고, 회수 대상과 회수 제외가 각각 몇 건인지, 회수 제외된 후보와 제외한 이유를 적어 주세요.
    - (나) 🔍 단계 3 출력을 보면 다미의 `SALES:QUERY` 는 제외 목록에 있는데 회수 대상으로 남았습니다. 왜 제외하지 않게 만들었을까요? 제외했다면 어떤 위험이 있을지도 적어 주세요.
    - (다) 🔍 제외 목록에는 제외하는 기간을 적는 키가 없습니다. 한 번 적은 권한을 아무도 다시 확인하지 않으면 어떤 문제가 생길까요? 목록에 권한을 추가할 때 누가 확인하면 좋을까요?
@@ -524,6 +589,7 @@ for item in to_revoke:                                           # 회수 대상
 **순서**
 
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+
    ```bash
    cd ..
    pwd
@@ -532,6 +598,7 @@ for item in to_revoke:                                           # 회수 대상
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
    - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다. 새로 연 뒤 `pwd` 를 한 번 더 쳐서 확인합니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
+
    ```bash
    git status
    ```
@@ -543,9 +610,11 @@ for item in to_revoke:                                           # 회수 대상
    - `Untracked files:` 는 「아직 깃이 모르는 새 파일」 목록입니다.
    - `access_control/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. 줄 수는 그 뒤에 다시 셉니다.
 3. **[보고서]** `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
+
    - (가) `git status` 를 쳤을 때 `Untracked files:` 아래에 줄이 몇 개 보였는지, 그중에 `.env` 나 `.venv` 가 있었는지 적어 주세요.
    - 앞 교시에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
+
    ```bash
    git add .
    git commit -m "Add access control day 4 access review and overprivilege report"
@@ -556,6 +625,7 @@ for item in to_revoke:                                           # 회수 대상
    - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다
    - `git pull` 뒤에 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, VS Code 왼쪽 목록의 `access_control` 폴더에 있는 파일들이 깃허브에도 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
+
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `access_control` 폴더에 내 PC 에도 있는지 봅니다. 없으면 다른 폴더에 만든 것이니 `access_control` 안으로 옮기고 1 ~ 4번을 다시 합니다.
 
 ### 마무리 한눈에
