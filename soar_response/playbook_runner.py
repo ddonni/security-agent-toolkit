@@ -16,8 +16,8 @@ def run_playbook(incident, playbook, state, action_log):                        
     for action in playbook["actions"]:                                           # 액션을 하나씩 꺼낸다
         # 4. run_action(action, incident, state) 의 결과를 result 에 담는다
         result = run_action(action, incident, state)                                  # 액션을 실행하고 결과를 담는다
-        action_log.append(make_log_entry(incident, playbook, action, result))         #
         # 5. make_log_entry(incident, playbook, action, result) 의 결과를 action_log 에 추가한다 (append)
+        action_log.append(make_log_entry(incident, playbook, action, result))         # 결과를 감사 기록에 추가한다
     # 6. change_status(incident, "조치됨") 를 호출한다 (실행이 끝났으니 조치됨으로 옮긴다)
     change_status(incident, "조치됨")                                            # 실행이 끝났으니 조치됨으로 옮긴다
     return True                                                                  # 모두 실행했으니 True 를 리턴한다
